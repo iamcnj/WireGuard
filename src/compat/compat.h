@@ -387,27 +387,6 @@ static inline int get_random_bytes_wait(void *buf, int nbytes)
 #define system_power_efficient_wq system_unbound_wq
 #endif
 
-#if LINUX_VERSION_CODE < KERNEL_VERSION(3, 17, 0) && !defined(ISRHEL7)
-#include <linux/hrtimer.h>
-static inline u64 ktime_get_boot_ns(void)
-{
-	return ktime_to_ns(ktime_get_boottime());
-}
-#endif
-
-#if LINUX_VERSION_CODE < KERNEL_VERSION(4, 10, 0)
-#if LINUX_VERSION_CODE < KERNEL_VERSION(3, 17, 0)
-#include <linux/hrtimer.h>
-#else
-#include <linux/timekeeping.h>
-#endif
-static inline u64 __wgcompat_ktime_get_boot_fast_ns(void)
-{
-	return ktime_get_boot_ns();
-}
-#define ktime_get_boot_fast_ns __wgcompat_ktime_get_boot_fast_ns
-#endif
-
 #if LINUX_VERSION_CODE < KERNEL_VERSION(3, 14, 0)
 #include <linux/inetdevice.h>
 static inline __be32 our_confirm_addr_indev(struct in_device *in_dev, __be32 dst,  __be32 local, int scope)
@@ -831,6 +810,24 @@ static inline void skb_mark_not_on_list(struct sk_buff *skb)
 
 #if LINUX_VERSION_CODE < KERNEL_VERSION(5, 2, 0) && defined(__aarch64__)
 #define cpu_have_named_feature(name) (elf_hwcap & (HWCAP_ ## name))
+#endif
+
+#if LINUX_VERSION_CODE < KERNEL_VERSION(5, 2, 0)
+#if LINUX_VERSION_CODE < KERNEL_VERSION(4, 11, 0)
+#include <linux/sched.h>
+#else
+#include <linux/sched/clock.h>
+#endif
+#if LINUX_VERSION_CODE < KERNEL_VERSION(3, 17, 0)
+#include <linux/hrtimer.h>
+#else
+#include <linux/timekeeping.h>
+#endif
+static inline s64 __our_ktime_get_coarse_boottime(void)
+{
+	return local_clock();
+}
+#define ktime_get_coarse_boottime __our_ktime_get_coarse_boottime
 #endif
 
 /* https://github.com/ClangBuiltLinux/linux/issues/7 */
