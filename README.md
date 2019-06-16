@@ -5,4 +5,4 @@
 This project is released under the [GPLv2](COPYING).
 
 ## Modified
--[script] to create multiper users(https://raw.githubusercontent.com/hongwenjun/vps_setup/master/Wireguard/wg5clients.sh)
+-[script to create multiper users](https://raw.githubusercontent.com/hongwenjun/vps_setup/master/Wireguard/wg5clients.sh)
