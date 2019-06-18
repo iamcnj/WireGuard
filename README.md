@@ -19,3 +19,4 @@ This project is released under the [GPLv2](COPYING).
 
 ## 教程
 -[教程]（https://ssr.tools/1079)
+
