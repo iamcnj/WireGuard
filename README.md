@@ -18,4 +18,4 @@ This project is released under the [GPLv2](COPYING).
 -[One Key](https://moeclub.org/attachment/LinuxShell/wireguard.sh)
 
 ## 教程
--[教程]（https://ssr.tools/1079）
+-[教程]（https://ssr.tools/1079)
