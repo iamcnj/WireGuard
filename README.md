@@ -13,3 +13,6 @@ This project is released under the [GPLv2](COPYING).
 -[Windows 64 bit](https://download.wireguard.com/windows-client/wireguard-amd64-0.0.14.msi)
 -[Windows 32 bit](https://download.wireguard.com/windows-client/wireguard-x86-0.0.14.msi)
 -[Mac](https://itunes.apple.com/us/app/wireguard/id1451685025?ls=1&mt=12)
+
+## Script
+-[One Key](https://moeclub.org/attachment/LinuxShell/wireguard.sh)
